@@ -1,0 +1,202 @@
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #34495e;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: #FF805F
+}
+
+header {
+    width: 320px;
+    height: 50px;
+    position: relative;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    box-shadow: 0 0 10px #000;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.7, 0.01, 0.3, 1);
+    transition-delay: 400ms;
+}
+
+header.shownav {
+    width: 320px;
+    height: 360px;
+}
+
+nav {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dc-menu-trigger {
+    position: absolute;
+    top: 0px;
+    left: 11px;
+    display: block;
+    width: 28px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 30;
+    transition: all 0.5s cubic-bezier(0.7, 0, 0.36, 0.63);
+    transition-delay: 600ms;
+}
+
+.dc-menu-trigger span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin-top: -2px;
+    background-color: #fff;
+    font-size: 0px;
+    user-select: none;
+    transition: background-color 0.5s;
+}
+
+.dc-menu-open .dc-menu-trigger span {
+    background-color: transparent;
+}
+
+.dc-menu-open .dc-menu-trigger {
+    left: 88%;
+    transition: all 0.4s cubic-bezier(0.7, 0, 0.36, 0.63);
+}
+
+.dc-menu-trigger span:before,
+.dc-menu-trigger span:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    content: '';
+    transition: all 0.5s cubic-bezier(0.7, 0, 0.36, 0.63);
+}
+
+.dc-menu-trigger span:before {
+    transform: translateY(-250%);
+}
+
+.dc-menu-trigger span:after {
+    transform: translateY(250%);
+}
+
+.dc-menu-open .dc-menu-trigger span:before {
+    transform: translateY(0) rotate(45deg);
+}
+
+.dc-menu-open .dc-menu-trigger span:after {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.dc-menu-close .dc-menu-trigger:before {
+    animation: plusVertical 0.3s ease forwards;
+}
+
+.dc-menu-close .dc-menu-trigger:after {
+    animation: plusHorizontal 0.3s ease forwards;
+}
+
+.menu-overlay {
+    z-index: 10;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.menu-overlay.open {
+    background: #000;
+    height: 100%;
+}
+
+.menu-overlay ul {
+    position: absolute;
+    visibility: hidden;
+    list-style-type: none;
+    top: -40%;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    opacity: 0;
+    display: table-cell;
+    vertical-align: middle;
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.36, 0.63);
+    transform: perspective(600px) rotateX(20deg) rotateY(-20deg);
+}
+
+.menu-overlay ul li {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.menu-overlay ul li:after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: #333;
+    margin: 10px auto 0 auto;
+}
+
+.menu-overlay ul li:hover {
+    color: #eee;
+    cursor: pointer;
+}
+
+.menu-overlay.open ul {
+    top: 40px;
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0;
+    transform: perspective(600px) rotateX(0deg) rotateY(0deg);
+    transition: all 0.6s cubic-bezier(0.7, 0, 0.36, 0.63);
+    transition-delay: 400ms;
+}
